@@ -1,0 +1,10 @@
+\documentclass{llncs}
+\usepackage{epsfig}
+\begin{document}
+\title{BREW: Breakable web application for lectures in it-security - Userguide}
+\author{C Pohl
+\\ \email{christoph.pohl0@hm.edu}}
+\institute{Department for Computer Sciences and Mathematics\\ University of Applied Sciences\\ Munich}
+\maketitle
+
+\end{document}

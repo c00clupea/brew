@@ -1,0 +1,2 @@
+notangle -t8 -R"MakefileGuide" userguide.nw > Makefile
+notangle -t8 -R"MakefileBrew" userguide.nw > MakefileBrew

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="lib" path="lib/aopalliance.jar"/>
+	<classpathentry kind="lib" path="lib/commons-logging.jar"/>
+	<classpathentry kind="lib" path="lib/javax.servlet.jsp.jstl-1.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/javax.servlet.jsp.jstl-api-1.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/spring-aop.jar"/>
+	<classpathentry kind="lib" path="lib/spring-asm.jar"/>
+	<classpathentry kind="lib" path="lib/spring-aspects.jar"/>
+	<classpathentry kind="lib" path="lib/spring-beans.jar"/>
+	<classpathentry kind="lib" path="lib/spring-context-support.jar"/>
+	<classpathentry kind="lib" path="lib/spring-context.jar"/>
+	<classpathentry kind="lib" path="lib/spring-core.jar"/>
+	<classpathentry kind="lib" path="lib/spring-expression.jar"/>
+	<classpathentry kind="lib" path="lib/spring-instrument-tomcat.jar"/>
+	<classpathentry kind="lib" path="lib/spring-instrument.jar"/>
+	<classpathentry kind="lib" path="lib/spring-jdbc.jar"/>
+	<classpathentry kind="lib" path="lib/spring-jms.jar"/>
+	<classpathentry kind="lib" path="lib/spring-orm.jar"/>
+	<classpathentry kind="lib" path="lib/spring-oxm.jar"/>
+	<classpathentry kind="lib" path="lib/spring-test.jar"/>
+	<classpathentry kind="lib" path="lib/spring-tx.jar"/>
+	<classpathentry kind="lib" path="lib/spring-web.jar"/>
+	<classpathentry kind="lib" path="lib/spring-webmvc.jar"/>
+	<classpathentry kind="lib" path="lib/apache-tomcat-7.0.27-embed/ecj-3.7.2.jar"/>
+	<classpathentry kind="lib" path="lib/apache-tomcat-7.0.27-embed/tomcat-embed-core.jar"/>
+	<classpathentry kind="lib" path="lib/hsql/hsqldb.jar"/>
+	<classpathentry kind="lib" path="lib/apache-tomcat-7.0.27-embed/tomcat-embed-logging-juli.jar"/>
+	<classpathentry kind="lib" path="lib/apache-tomcat-7.0.27-embed/tomcat-embed-jasper.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

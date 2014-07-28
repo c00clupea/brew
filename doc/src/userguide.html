@@ -1,0 +1,607 @@
+<!-- this file was generated automatically by noweave; better not edit it-->
+<html><head><title>userguide.nw</title></head><body>
+
+
+
+
+
+userguide.nw
+<h1><a name=toc1>BREW: Breakable web application for lectures in IT-Security</a></h1>
+<address>C Pohl 
+<br>christoph.pohl0@hm.edu</address>
+Department for Computer Sciences and Mathematics<br>University of Applied Sciences<br>Munich
+<!--title goes here--><p>
+0
+<hr>
+<b>[</b>Ill-understood graphics<b>]</b>
+<hr>
+<h2><a name=toc2>Introduction or how to read this file</a></h2>
+This file looks a bit strange. There are a lot of references and broken source code. And there are some fancy references like <code><a href="#NWD4Ugr3m-b"><i>&lt;README&gt;</i></a></code>.
+<p>
+At first this document (and big parts of BREW) are written in literate programming. This means you will write a documentation which includes the source code (normally you write source code and a documentation for it..). Even the makefile to generate the documentation is included in the documentation...However this is a nitty gritty way to write source code, it will also produce some uncommon documentation. To read this paper you just need to know that there are references like this <code><a href="#NWD4Ugr3m-b"><i>&lt;README&gt;</i></a></code>. This means that there is a reference to a codechunk (a piece of code). This occurs in code chunks or in plain text. The liitle number at the end of such a reference is the page where this code is located in this document. In every code block there are one or two references. One on the left side. This is the label for this piece of code. On the right side you will find a reference to former code. 
+<p>
+Give it a try and find the <code><a href="#NWD4Ugr3m-b"><i>&lt;README&gt;</i></a></code> code in this document. Than watch the README in the source directory. This is the tangling output from literate programming. Also look at the different sourcefiles, including the <code><a href="#nw@notdef"><i>&lt;Makefile&gt;</i></a></code> and the LaTeXsources. Everything is build from the original <em>userguide.nw</em>.
+<p>
+However this is a nice way to write well documented code. In the source folder you can find the full source code, including the <code><a href="#nw@notdef"><i>&lt;Makefile&gt;</i></a></code> to recreate BREW, this document and even the html version. You will need a few tools for this. At first you will need Latex, noweb (for the literate programming part), gcc, make, java and python. But this is a bit out of scope now.
+<p>
+<h2><a name=toc3>BREW in a virtual machine</a></h2>
+<h3><a name=toc4>Some basics</a></h3>
+It is not necessary to use BREW in a virtual machine. BREW is just a simple web application and a bit of source code in your IDE.
+However, you can use the preconfigured virtual machine. 
+<p>
+In the most cases you will use the VirtualBox environment (You can also use KVM-qemu which is the cool way, but not really a handy solution. The KVM-qemu machine is meant for the use in a cloud environment). At first copy the .ova file. You can also test this file against the provided hashsum (You should do this if you choosed to download the full package). Howver find a suitable space in your directory and copy the .ova in this directory. Then you need to import your virtual machine. (Use import virtual machine). All the fancy configuration should be done automatically (It is preconfigured). However there are a few possible problems there. 
+<p>
+<ul>
+<li>You need write access to the directory (Really you have to read the error statements. This is one of the most common problems in lectures...)
+<li>You need sufficient space
+<li>You need a 64 Bit operating system
+<li>You need the VT flag enabled
+</ul> 
+<p>
+OK what is VT flag? Read some manuals (or just google)...
+<p>
+OK what is 64 Bit? You are computer scientist...
+<p>
+Sounds trivial? OK it is! Read carefully the error messages, in most cases you will find one of the errors above....
+<p>
+How to deal with it? Ask your admin or use google....
+<p>
+<h3><a name=toc5>Some important notes for configuration</a></h3>
+The virtual machine is preconfigured, when you want to adopt the system to your needs read the prerequisites (c.f. Table <a href="#tab:prereq">[-&gt;]</a>) for the guest machine.
+<p>
+<hr>
+<b>Owasp Top Ten Attacks</b>
+<a name="tab:prereq"><b>[*]</b></a>
+<table><!-- alignment is llllll--><!-- 6 columns--><br><br><tr><td align="left" valign="top">Prerequisite </td><td align="left" valign="top">value</td></tr>
+<br><br><br><br><tr><td align="left" valign="top">RAM </td><td align="left" valign="top">512 MB</td></tr>
+<tr><td align="left" valign="top">IO-APIC </td><td align="left" valign="top">True</td></tr>
+<tr><td align="left" valign="top">Processor </td><td align="left" valign="top">1</td></tr>
+<tr><td align="left" valign="top">PAE-NX </td><td align="left" valign="top">False</td></tr>
+<tr><td align="left" valign="top">VT-X/AMD-V </td><td align="left" valign="top">True</td></tr>
+<tr><td align="left" valign="top">Graphic Ram </td><td align="left" valign="top">9MB</td></tr>
+<tr><td align="left" valign="top">Network </td><td align="left" valign="top">Host only or NAT(Never Bridged...really dangerous)</td></tr>
+</table>
+<hr>
+Hence the most common configuration will be RAM (whatever you want) and processor (whatever you want). This will enhance the performance.
+<p>
+Never ever use a bridged network. BREW is a vulnerable web application. This means it is really vulnerable (no game). With a bridged network you will expose BREW to the rest of the world (or your local lan). 
+<p>
+<h3><a name=toc6>Start BREW and beyond</a></h3>
+After successful import just press start in VirtualBox. The virtual machine will start and after a few seconds you will see a nice looking and well designed terminal (c.f. Figure <a href="#fig:login">[-&gt;]</a>)...
+<p>
+<hr>
+<b>[</b>Ill-understood graphics<b>]</b>
+<b>Screenshot login</b> 
+<a name="fig:login"><b>[*]</b></a>
+<hr>
+<p>
+To log in use <code>username:muse</code> and <code>password:muse</code>. You can also login with <code>root:muse</code>. By the way, just the normal muse user has a functional X-Server configuration.
+In normal cases you should see something like in Figure <a href="#fig:loginsuc">[-&gt;]</a>
+<p>
+<hr>
+<b>[</b>Ill-understood graphics<b>]</b>
+<b>Screenshot login successful</b> 
+<a name="fig:loginsuc"><b>[*]</b></a>
+<hr>
+<p>
+However this is nice and you are ready to start a successful career with BREW. A real nerd does not need to use stuff like the X-Server. In this moment you can use BREW just with vim and some nice console commands.
+<p>
+However, we had too much complaints about the usability, we implemented openbox for your convenience.
+<p>
+To start the X-Server type <code>startx</code> in the command line.
+However when everything is ok, you should see something like in Figure <a href="#fig:brewwork">[-&gt;]</a>
+<p>
+<hr>
+<b>[</b>Ill-understood graphics<b>]</b>
+<b>BREW works</b> 
+<a name="fig:brewwork"><b>[*]</b></a>
+<hr>
+<p>
+<h2><a name=toc7>BREW in the IDE</a></h2>
+BREW can be started directly from the IDE. For this you need to open the project. Do not import, extract or try other unfancy things. Just open the project. You can do this with <em>File<i>--&gt;</i>Open</em> from the IDE. Sounds trivial but in every lecture this is a common error...
+In the case of the virtual machine, you just need to open eclipse. The project is the default project.
+<p>
+However you will find some nitty gritty hints in the README file. Hence this guide is written in literate programming, the README file is generated out of this document...
+But is also part of this document (fancy or?). The file is in the appendix <code><a href="#NWD4Ugr3m-b"><i>&lt;README&gt;</i></a></code>.
+<p>
+In the <code><a href="#NWD4Ugr3m-b"><i>&lt;README&gt;</i></a></code> you will find all necessary tips for a successful exercise.
+<p>
+As proposed in the <code><a href="#NWD4Ugr3m-b"><i>&lt;README&gt;</i></a></code> there is a mainfile. This mainfile is proposed under <code><a href="#NW4Ugr3m-38m9kp-1"><i>&lt;TomcatServer.java&gt;</i></a></code>.
+When you want to change the port for BREW you can do this in this main file.
+<p>
+<h2><a name=toc8>Architectural basics</a></h2>
+<h3><a name=toc9>Database and Webserver</a></h3>
+The database is an embedded hlsql database. It always renews whenever BREW gets restarted. There is no persistent storage. 
+<p>
+The webserver is an embedded Tomcat. It gets started whenever BREW gets started. Hence a webserver needs a listening address and port you can not start more than one server on one port...Typically you get an exception 
+<p>
+<code>...
+java.net.BindException: Address already in use &lt;null&gt;:8081
+...</code>
+<p>
+This exception occurs whenever more than one server is bound to the same port. However this happens when you have a running instance and try to debug...
+<p>
+<h3><a name=toc10>Important pathes</a></h3>
+In BREW there are two important pathes for the exercises. The pathes are easy to find with the knowledge about the structure. As proposed in <a href="#subsec:controller">[-&gt;]</a> one must find the controller and the corresponding view. Simplified at first one must look at the functionality. Each functionality (p.Ex search) has a mapping Controller (p.Ex. SearchController.java). Just look on the page in BREW, and you will find immediatly the corresponding controller. Another part of interest is the view. The view is calculated with the viewname. Simplified with <code>viewname+&quot;.jsp&quot;</code>. In BREW you can find the controller and view on different places.
+The controller are under <em>src<i>--&gt;</i>edu<i>--&gt;</i>hm<i>--&gt;</i>muse<i>--&gt;</i>controller</em>, the views are within <em>webapps<i>--&gt;</i>secu<i>--&gt;</i>WEB-INF<i>--&gt;</i>pages</em>
+<p>
+
+<h3><a name=toc11>Controller overview</a></h3><a name="subsec:controller"><b>[*]</b></a>
+The architecture integrates a classical MVC pattern to provide the web application.As underlying framework the widely used Spring framework is sued. The Spring framework is a lightweight platform for java applications. For the sake of simplicity, the focus is set on the vulnerabilities. A schematic overview is given in Figure <a href="#fig:architecture">[-&gt;]</a>
+<p>
+<hr>
+<b>[</b>Ill-understood graphics<b>]</b>
+<b>BREW architecture</b> 
+<a name="fig:architecture"><b><a name="NWD4Ugr3m-1">[*]</a></b></a>
+<hr>
+<p>
+At first the browser send an request to BREW. Within the path matching of the Springframework a controller method gets called. In this example the search page is mapped to <em>http://mydomain/search.secu</em>. For simplicity every logical component has a related controller class (p.Ex. <em>Searchpage <i>--&gt;</i> SearchController.java</em>). Every action within this logical component inherits a method. (p.Ex <em>search <i>--&gt;</i> searchWebWithPost(<i></i>)</em>).
+Within this method the Businesslogic occurs. The businesslogic can ask the data access layer. This logic produces a HashMap-based model for further usage in the related view. In this example, the view gets the variable <em>search</em> accessible with the key <em>searchString</em>.
+<p>
+
+<h3><a name=toc12>Some basics to the Controller</a></h3>
+The Controller is just a simple javafile. It consists on different parts. Hence this is written in literate programming, we need to explain everything....
+<p><pre><a name="NW4Ugr3m-4fUKe6-1" href="#NWD4Ugr3m-1"><dfn>&lt;SearchController.java&gt;=</dfn></a>
+<a name="NW4Ugr3m-4fUKe6-1-u1" href="#NWD4Ugr3m-c"><i>&lt;some fancy license stuff&gt;</i></a>
+<a name="NW4Ugr3m-4fUKe6-1-u2" href="#NWD4Ugr3m-e"><i>&lt;some import statements for the SearchController&gt;</i></a>
+<a name="NW4Ugr3m-4fUKe6-1-u3" href="#NWD4Ugr3m-2"><i>&lt;class declaration for search controller&gt;</i></a>
+        <a name="NW4Ugr3m-4fUKe6-1-u4" href="#NWD4Ugr3m-3"><i>&lt;method declaration for search controller&gt;</i></a>
+</pre><p>
+<a name="NWD4Ugr3m-2">Hence it is trivial to define a class. There is an important annotation. This ensures that the Spring FRamework knows that this class acts like a controller.</a>
+<p><pre><a name="NW4Ugr3m-1a0CYJ-1" href="#NWD4Ugr3m-2"><dfn>&lt;class declaration for search controller&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-1">&lt;-U</a>)</b>
+@Controller
+public class SearchController {
+</pre><p>
+<a name="NWD4Ugr3m-3">A method for any controller is just a method. This method gets called by the dispatcher from spring. This depends on the URI and the parameter.</a>
+<p><pre><a name="NW4Ugr3m-2vmaBC-1" href="#NWD4Ugr3m-3"><dfn>&lt;method declaration for search controller&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-1">&lt;-U</a>)</b>
+<a name="NW4Ugr3m-2vmaBC-1-u1" href="#NWD4Ugr3m-4"><i>&lt;Mapping for post based search action&gt;</i></a>
+<a name="NW4Ugr3m-2vmaBC-1-u2" href="#NWD4Ugr3m-5"><i>&lt;declaration for post based search action method&gt;</i></a>
+        <a name="NW4Ugr3m-2vmaBC-1-u3" href="#NWD4Ugr3m-6"><i>&lt;method body for post based seach action method&gt;</i></a>
+        
+</pre><p>
+
+<a name="NWD4Ugr3m-4">The basic request mapping is done with the annotation over the corresponding method. This will map every request to the URI </a><em>http://mydomain/secu/search.secu</em> to this method. But only when the request method is <em>POST</em> and the parameters will match.
+<p><pre><a name="NW4Ugr3m-Bgkc9-1" href="#NWD4Ugr3m-4"><dfn>&lt;Mapping for post based search action&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-3">&lt;-U</a>)</b>
+@RequestMapping
+        (value = &quot;/search.secu&quot;, 
+        method = RequestMethod.POST)
+</pre><p>
+
+<a name="NWD4Ugr3m-5">The second mapping part is done over the matchin parameters. In this case there can be a parameter named </a><em>search</em>. The value for this parameter, p.Ex from a text input field will be present in the variable <em>search</em>. However if this parameter is not present, the variable will be null.
+<p><pre><a name="NW4Ugr3m-ir6Gd-1" href="#NWD4Ugr3m-5"><dfn>&lt;declaration for post based search action method&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-3">&lt;-U</a>)</b>
+public ModelAndView searchWebWithPost
+        (@RequestParam
+                (value = &quot;search&quot;, 
+                required = false) 
+                String search) {
+</pre><p>
+
+<a name="NWD4Ugr3m-6">In normal cases the method body needs to return a Model and a View. In this body the business logic is called. The controller consists of different stages in model and view generation.</a>
+<p><pre><a name="NW4Ugr3m-hNOrN-1" href="#NWD4Ugr3m-6"><dfn>&lt;method body for post based seach action method&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-3">&lt;-U</a>)</b>
+<a name="NW4Ugr3m-hNOrN-1-u1" href="#NWD4Ugr3m-7"><i>&lt;generate searchmodel and view&gt;</i></a>
+<a name="NW4Ugr3m-hNOrN-1-u2" href="#NWD4Ugr3m-8"><i>&lt;fill searchmodel with data&gt;</i></a>
+<a name="NW4Ugr3m-hNOrN-1-u3" href="#NWD4Ugr3m-9"><i>&lt;return model and view&gt;</i></a>
+}
+</pre><p>
+<a name="NWD4Ugr3m-7">To generate a model and view there is a special type in Spring. The </a><em>ModelAndView</em> class combines the model and view. As parameter the name of the view is injected. In our case it is <em>search</em>. This maps to <em>search.jsp</em>. Hence the mapping is generated and simplify the suffix <em>.jsp</em> gets appended.
+<p><pre><a name="NW4Ugr3m-PiA1k-1" href="#NWD4Ugr3m-7"><dfn>&lt;generate searchmodel and view&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-6">&lt;-U</a>)</b>
+ModelAndView mv = new ModelAndView(&quot;search&quot;);
+</pre><p>
+<a name="NWD4Ugr3m-8">To fill the model, one must use a key and the value. With this key, the corresponding view is able to use this variable. In this case the view can ask for the value of variable </a><em>search</em> with the key <em>searchString</em>. In this method this is just the input from previous post request.
+<p><pre><a name="NW4Ugr3m-KyitU-1" href="#NWD4Ugr3m-8"><dfn>&lt;fill searchmodel with data&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-6">&lt;-U</a>)</b>
+mv.addObject(&quot;searchString&quot;, search);
+</pre><p>
+<a name="NWD4Ugr3m-9">Each controller needs to return a ModelAndView object. The Spring framework uses this object to render the related jsp page.</a>
+<p><pre><a name="NW4Ugr3m-2aKjAb-1" href="#NWD4Ugr3m-9"><dfn>&lt;return model and view&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-6">&lt;-U</a>)</b>
+return mv;
+</pre><p>
+
+
+<h3><a name=toc13><a name="NWD4Ugr3m-A">Some words to the view</a></a></h3>
+The views are the presentation layer in BREW. Hence there are many technologies in the wild we use simple jsp pages. This page will be called, as stated before from the controller. Simplified when the controller asks for the view <em>search</em> Spring will render the page <em>search.jsp</em>. The suffix will be appended automatically.
+<p>
+A view consists of different parts. Some parts are just for convienience and not for interest in our case. In our example the <em>search.jsp</em> is presented.
+<p><pre><a name="NW4Ugr3m-3v3l8G-1" href="#NWD4Ugr3m-A"><dfn>&lt;search.jsp&gt;=</dfn></a>
+<a name="NW4Ugr3m-3v3l8G-1-u1" href="#NWD4Ugr3m-B"><i>&lt;include the header and the c taglib&gt;</i></a>
+<a name="NW4Ugr3m-3v3l8G-1-u2" href="#NWD4Ugr3m-C"><i>&lt;render some nice topics&gt;</i></a>
+<a name="NW4Ugr3m-3v3l8G-1-u3" href="#NWD4Ugr3m-D"><i>&lt;present a form usable by controller&gt;</i></a>
+<a name="NW4Ugr3m-3v3l8G-1-u4" href="#NWD4Ugr3m-E"><i>&lt;render some model based output&gt;</i></a>
+<a name="NW4Ugr3m-3v3l8G-1-u5" href="#NWD4Ugr3m-F"><i>&lt;include the footer and some convienience stuff&gt;</i></a>
+</pre><p>
+
+<a name="NWD4Ugr3m-B">The header includes the c taglib. Look carefully for the taglib documentation. Perhaps there is something useful for the exercises..</a>
+<p><pre><a name="NW4Ugr3m-41Sj7I-1" href="#NWD4Ugr3m-B"><dfn>&lt;include the header and the c taglib&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-A">&lt;-U</a>)</b>
+&lt;%@ taglib prefix=&quot;c&quot; uri=&quot;http://java.sun.com/jsp/jstl/core&quot;%&gt;
+&lt;jsp:include page=&quot;../../head.jsp&quot;/&gt;
+</pre><p>
+
+<a name="NWD4Ugr3m-C">The topics are plain html stuff and only to present some nice look and feel</a>
+<p><pre><a name="NW4Ugr3m-2JQ41C-1" href="#NWD4Ugr3m-C"><dfn>&lt;render some nice topics&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-A">&lt;-U</a>)</b>
+&lt;h1&gt;Search&lt;/h1&gt;
+
+&lt;h2&gt;Search&lt;/h2&gt;
+</pre><p>
+
+<a name="NWD4Ugr3m-D">This is one of the more interesting parts. In the controllermethod </a><code><a href="#NWD4Ugr3m-5"><i>&lt;declaration for post based search action method&gt;</i></a></code> the variable <em>search</em> named by the controller methodannotation <em>value=&quot;search&quot;</em> is needed. In the form there is a form field with the name <em>search</em>. This name links to the annotated parameter in the controller. The value from this form field will be the injected parameter. 
+<p>
+<pre><a name="NW4Ugr3m-1p6nXC-1" href="#NWD4Ugr3m-D"><dfn>&lt;present a form usable by controller&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-A">&lt;-U</a>)</b>
+&lt;form action=&quot;search.secu&quot; method=&quot;post&quot;&gt;
+    &lt;input type=&quot;text&quot; name=&quot;search&quot;&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;Start High Performance \
+        and super safe search...&quot;&gt;
+&lt;/form&gt;
+</pre><p>
+
+<a name="NWD4Ugr3m-E">However the controller also responds with a model and the inherited key value pair </a><em>searchString,value</em>. In the view, the pattern <em>${searchString}</em> will be replaced with this value.
+<p><pre><a name="NW4Ugr3m-14wkcX-1" href="#NWD4Ugr3m-E"><dfn>&lt;render some model based output&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-A">&lt;-U</a>)</b>
+&lt;div&gt;&lt;c:out value=&quot;${searchString}&quot;/&gt;&lt;/div&gt;
+ &lt;!--
+&lt;b&gt;You searched for ${searchString}&lt;/b&gt;          --&gt;
+</pre><p>
+
+<a name="NWD4Ugr3m-F">For a graceful end there is some convienience stuff at the end. This is just to present a nice web page without to much overhead in each jsp page.</a>
+<p><pre><a name="NW4Ugr3m-3izJNY-1" href="#NWD4Ugr3m-F"><dfn>&lt;include the footer and some convienience stuff&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-A">&lt;-U</a>)</b>
+&lt;jsp:include page=&quot;../help/search_help.jsp&quot;/&gt;
+&lt;jsp:include page=&quot;../../foot.jsp&quot;/&gt;
+</pre><p>
+
+<h2><a name=toc14>The basic Makefile</a></h2>
+However the next section is really interesting (for a nerd), it is not necessary for the lecture or to work with BREW. It is just for further reading, completeness and and some funky coding in literate programming...
+The following section describes how to build the makefile to make this file....
+<p>
+<a name="NWD4Ugr3m-G">And also when you are really stucked in lecture (and want to reset BREW). However you did not listen to the lecturer, you can just use the last snapshot from the VM. This is more painless, easier and the preferred solution..</a>
+<p>
+Already there? OK, following section describes the Makefile for Brew development and the userguide.
+<p>
+<h3><a name=toc15>Some basics about make and the Makefile</a></h3>
+The basic deployment for BREW is based on two Makefile.
+These can be used to initially install BREW (when not preconfigured), to redeploy BREW or to rebuild the guide.
+For students and users, the most important Makefile will be <code><a href="#NWD4Ugr3m-G"><i>&lt;MakefileBrew&gt;</i></a></code>. This Makefile is located under the installation root and is able to reinstall BREW.
+<p><pre><a name="NW4Ugr3m-3X86s2-1" href="#NWD4Ugr3m-G"><dfn>&lt;MakefileBrew&gt;=</dfn></a>
+<a name="NW4Ugr3m-3X86s2-1-u1" href="#NWD4Ugr3m-M"><i>&lt;some basic variables for Brew deployment&gt;</i></a>
+<a name="NW4Ugr3m-3X86s2-1-u2" href="#NWD4Ugr3m-I"><i>&lt;parts of makefile for Brew deployment&gt;</i></a>
+</pre><p>
+
+<a name="NWD4Ugr3m-H">The </a><code><a href="#NWD4Ugr3m-H"><i>&lt;MakefileGuide&gt;</i></a></code> is the Makefile for Brew developers. It can be used to rebuild BREW, the documentation and in the source version even the master guide.
+<p><pre><a name="NW4Ugr3m-2R2Cr0-1" href="#NWD4Ugr3m-H"><dfn>&lt;MakefileGuide&gt;=</dfn></a>
+<a name="NW4Ugr3m-2R2Cr0-1-u1" href="#NWD4Ugr3m-S"><i>&lt;parts of makefile to build brew&gt;</i></a>
+<a name="NW4Ugr3m-2R2Cr0-1-u2" href="#NWD4Ugr3m-T"><i>&lt;parts of makefile for guide creation&gt;</i></a>
+</pre><p>
+<a name="NWD4Ugr3m-I">The </a><em>Makefile</em> should be used with <em>make</em>. However, to call a target just type <em>make <i>targetname</i></em>.
+<p>
+<h3><a name=toc16>Back to the roots</a></h3>
+Whenever you are lost in space or just stucked in your lecture you can redeploy the full BREW.
+However you already know the <em>Makefile</em>. To reset your BREW to default there are different options.
+<p><pre><a name="NW4Ugr3m-1UxC3j-1" href="#NWD4Ugr3m-I"><dfn>&lt;parts of makefile for Brew deployment&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-G">&lt;-U</a>)</b>
+redeploybrew:
+        <a name="NW4Ugr3m-1UxC3j-1-u1" href="#NWD4Ugr3m-J"><i>&lt;redeploy BREW&gt;</i></a>
+deletebrew:
+        <a name="NW4Ugr3m-1UxC3j-1-u2" href="#NWD4Ugr3m-K"><i>&lt;delete BREW at default path&gt;</i></a>
+extractbrew:
+        <a name="NW4Ugr3m-1UxC3j-1-u3" href="#NWD4Ugr3m-L"><i>&lt;extract BREW from default path to default installation path&gt;</i></a>
+packbrew:
+        <a name="NW4Ugr3m-1UxC3j-1-u4" href="#NWD4Ugr3m-N"><i>&lt;tar.gz important pathes from BREW&gt;</i></a>
+packforcopy:
+        <a name="NW4Ugr3m-1UxC3j-1-u5" href="#NWD4Ugr3m-R"><i>&lt;tar.gz important pathes without date&gt;</i></a>
+</pre><p>
+
+<a name="NWD4Ugr3m-J">The major part for redeployment is the </a><em>redeploybrew</em> command. It is just a wrapper (or cycle) for other commands.
+<p><pre><a name="NW4Ugr3m-1nlaBD-1" href="#NWD4Ugr3m-J"><dfn>&lt;redeploy BREW&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-I">&lt;-U</a>)</b>
+        make deletebrew
+        make extractbrew
+</pre><p>
+
+<a name="NWD4Ugr3m-K">Hence it is self explained, the </a><em>deletebrew</em> command tries to delete BREW from the standard path. There is no security or other feature to prevent data loss...
+<p><pre><a name="NW4Ugr3m-3nckQl-1" href="#NWD4Ugr3m-K"><dfn>&lt;delete BREW at default path&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-I">&lt;-U</a>)</b>
+        rm -rvf ${appdir}
+        rm -rvf ${docdir} 
+</pre><p>
+<a name="NWD4Ugr3m-L">However to recreate BREW it needs to be extracted from the </a><em>brew.tar.gz</em> file. It also creates the Brew app directory. 
+<p><pre><a name="NW4Ugr3m-2VX44r-1" href="#NWD4Ugr3m-L"><dfn>&lt;extract BREW from default path to default installation path&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-I">&lt;-U</a>)</b>
+        tar -xzvf ${filename} 
+</pre><p>
+
+<a name="NWD4Ugr3m-M">For a successfully build we need some nice variables in the Makefile.</a>
+<p><pre><a name="NW4Ugr3m-2tHwk4-1" href="#NWD4Ugr3m-M"><dfn>&lt;some basic variables for Brew deployment&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-G">&lt;-U</a>)</b>
+<a name="NW4Ugr3m-2tHwk4-1-u1" href="#NWD4Ugr3m-Q"><i>&lt;filename for deployment or suffix&gt;</i></a>
+<a name="NW4Ugr3m-2tHwk4-1-u2" href="#NWD4Ugr3m-O"><i>&lt;some basic directories settings&gt;</i></a>
+<a name="NW4Ugr3m-2tHwk4-1-u3" href="#NWD4Ugr3m-P"><i>&lt;additionals documentation and datesettings&gt;</i></a>
+</pre><p>
+
+<a name="NWD4Ugr3m-N">You can even tar BREW in current state. Be careful and watch the directories which get saved....</a>
+<p><pre><a name="NW4Ugr3m-4NVvim-1" href="#NWD4Ugr3m-N"><dfn>&lt;tar.gz important pathes from BREW&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-I">&lt;-U</a>)</b>
+        tar -czvf &quot;${actualfile}&quot; ${allFilesToTarGz}
+</pre><p>
+<a name="NWD4Ugr3m-O">Some basic directories are explained within the variable settings</a>
+<p><pre><a name="NW4Ugr3m-1YdDJP-1" href="#NWD4Ugr3m-O"><dfn>&lt;some basic directories settings&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-M">&lt;-U</a>)</b>
+appdir := app
+docdir := doc
+sources := ${appdir}/src
+lib := ${appdir}/lib
+webapps := ${appdir}/webapps
+</pre><p>
+<a name="NWD4Ugr3m-P">There are also some additional files and date settings</a>
+<p><pre><a name="NW4Ugr3m-3FcOsW-1" href="#NWD4Ugr3m-P"><dfn>&lt;additionals documentation and datesettings&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-M">&lt;-U</a>)</b>
+additionals := makefile ${appdir}/.project ${appdir}/.classpath
+documentation := ${docdir}/userguide.pdf ${docdir}/README
+actualfile = $(shell date)_${filename}
+allFilesToTarGz := ${sources} ${lib} ${webapps} ${additionals} ${documentation}
+</pre><p>
+<a name="NWD4Ugr3m-Q">The basic filename which will be the main deployment file is </a><em>brew.tar.gz</em>. Also this is the suffix for the backup script.
+<p><pre><a name="NW4Ugr3m-42gEm8-1" href="#NWD4Ugr3m-Q"><dfn>&lt;filename for deployment or suffix&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-M">&lt;-U</a>)</b>
+filename := brew.tar.gz
+</pre><p>
+<a name="NWD4Ugr3m-R">For completeness you can tar.gz it without date in the filename</a>
+<p><pre><a name="NW4Ugr3m-1YEjVj-1" href="#NWD4Ugr3m-R"><dfn>&lt;tar.gz important pathes without date&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-I">&lt;-U</a>)</b>
+        tar -czvf ${filename} ${allFilesToTarGz}
+</pre><p>
+
+
+<h3><a name=toc17><a name="NWD4Ugr3m-S">Build BREW on your own</a></a></h3>
+To create BREW from this literate programming doc, we need some Makefile entries
+<p>
+<pre><a name="NW4Ugr3m-1236w8-1" href="#NWD4Ugr3m-S"><dfn>&lt;parts of makefile to build brew&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-H">&lt;-U</a>)</b>
+buildBrew:
+        make SearchController.java
+        make search.jsp
+        make README
+SearchController.java: userguide.nw
+        notangle -t8 -R&quot;SearchController.java&quot; \
+        userguide.nw &gt; SearchController.java
+search.jsp: userguide.nw
+        notangle -t8 -R&quot;search.jsp&quot; \
+        userguide.nw &gt; search.jsp
+
+README: userguide.nw
+        notangle -t8 -R&quot;README&quot; \
+        userguide.nw &gt; README
+
+upload: userguide.nw
+        scp -P 3022 README muse@127.0.0.1:/home/muse/userguide
+        scp -P 3022 userguide.pdf muse@127.0.0.1:/home/muse/userguide
+        scp -P 3022 Makefile muse@127.0.0.1:/home/muse/userguide
+        scp -P 3022 userguide.html muse@127.0.0.1:/home/muse/userguide
+        
+</pre><p>
+
+<h3><a name=toc18><a name="NWD4Ugr3m-T">Guidebuilding</a></a></h3>
+Each guide is written as literate programming. The toolset depends on make, latex, eps2pdf, noweb, and of course gcc, javac and python interpreter.
+<p>
+For a basic setup there is the main Makefile
+This Makefile has different options 
+<p><pre><a name="NW4Ugr3m-2IqTN4-1" href="#NWD4Ugr3m-T"><dfn>&lt;parts of makefile for guide creation&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-H">&lt;-U</a>)</b>
+edituserguide:
+        <a name="NW4Ugr3m-2IqTN4-1-u1" href="#NWD4Ugr3m-V"><i>&lt;edit userguide&gt;</i></a>
+cycle:
+        <a name="NW4Ugr3m-2IqTN4-1-u2" href="#NWD4Ugr3m-U"><i>&lt;cycle all&gt;</i></a>
+userguide.tex: userguide.nw
+        <a name="NW4Ugr3m-2IqTN4-1-u3" href="#NWD4Ugr3m-X"><i>&lt;userguide to tex&gt;</i></a>
+userguide.html: userguide.nw
+        <a name="NW4Ugr3m-2IqTN4-1-u4" href="#NWD4Ugr3m-Y"><i>&lt;userguide to html&gt;</i></a>
+userguide.pdf: userguide.tex
+        <a name="NW4Ugr3m-2IqTN4-1-u5" href="#NWD4Ugr3m-Z"><i>&lt;userguide to pdf&gt;</i></a>
+Makefile: userguide.nw
+        <a name="NW4Ugr3m-2IqTN4-1-u6" href="#NWD4Ugr3m-W"><i>&lt;build makefile&gt;</i></a>
+copydoc:
+        <a name="NW4Ugr3m-2IqTN4-1-u7" href="#NWD4Ugr3m-a"><i>&lt;copy doc to dir&gt;</i></a>
+</pre><p>
+<a name="NWD4Ugr3m-U">The most important part is the </a><em>cycle</em> directive. It recreates the user guide and builds the source code from this document.
+<p><pre><a name="NW4Ugr3m-1q4V95-1" href="#NWD4Ugr3m-U"><dfn>&lt;cycle all&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-T">&lt;-U</a>)</b>
+        make Makefile
+        make buildBrew
+        make userguide.tex
+        make userguide.html
+        make userguide.pdf
+        make copydoc
+</pre><p>
+<a name="NWD4Ugr3m-V">The </a><em>edituserguide</em> is a simple shell command. It calls vim as standard editor.
+<p><pre><a name="NW4Ugr3m-2YVgXf-1" href="#NWD4Ugr3m-V"><dfn>&lt;edit userguide&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-T">&lt;-U</a>)</b>
+        vim userguide.nw
+</pre><p>
+<a name="NWD4Ugr3m-W">An even fancy option is to build the Makefile from this Makefile.</a>
+<p><pre><a name="NW4Ugr3m-BehEH-1" href="#NWD4Ugr3m-W"><dfn>&lt;build makefile&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-T">&lt;-U</a>)</b>
+        notangle -t8 -R&quot;MakefileGuide&quot; userguide.nw &gt; MakefileGuide
+        notangle -t8 -R&quot;MakefileBrew&quot; userguide.nw &gt; MakefileBrew
+        mv MakefileGuide Makefile
+        mv MakefileBrew ../../makefile
+</pre><p>
+
+<a name="NWD4Ugr3m-X">To extract the </a><em>userguide.tex</em> file the following directive is implemented. This will just extract the texfile, but would not compile it.
+<p><pre><a name="NW4Ugr3m-1KpylA-1" href="#NWD4Ugr3m-X"><dfn>&lt;userguide to tex&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-T">&lt;-U</a>)</b>
+        noweave -x -n -delay \
+        -latex userguide.nw &gt; userguide.tex 
+</pre><p>
+<a name="NWD4Ugr3m-Y">To build a pretty looking html following directive will produce this part:</a>
+<p><pre><a name="NW4Ugr3m-Pvr1c-1" href="#NWD4Ugr3m-Y"><dfn>&lt;userguide to html&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-T">&lt;-U</a>)</b>
+        noweave -filter l2h -index \
+        -html userguide.nw | htmltoc &gt; userguide.html
+</pre><p>
+<a name="NWD4Ugr3m-Z">Further the tex code needs to be compiled:</a>
+<p><pre><a name="NW4Ugr3m-YH8KK-1" href="#NWD4Ugr3m-Z"><dfn>&lt;userguide to pdf&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-T">&lt;-U</a>)</b>
+        pdflatex userguide.tex
+        #bibtex userguide.tex
+        pdflatex userguide.tex
+        pdflatex userguide.tex
+</pre><p>
+
+<a name="NWD4Ugr3m-a">At last we need to copy the important documents to the correct folder</a>
+<p><pre><a name="NW4Ugr3m-2gtvwn-1" href="#NWD4Ugr3m-a"><dfn>&lt;copy doc to dir&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-T">&lt;-U</a>)</b>
+        cp userguide.pdf ../
+        cp README ../   
+</pre><p>
+
+
+<h2><a name=toc19><a name="NWD4Ugr3m-b">Appendix</a></a></h2>
+<h2><a name=toc20>Readme and stuff</a></h2>
+<p>
+<pre><a name="NW4Ugr3m-1u9106-1" href="#NWD4Ugr3m-b"><dfn>&lt;README&gt;=</dfn></a>
+Welcome to BREW
+
+####Open BREW
+This is more how to start the IDE.
+Hence we suppose you have no running instance from eclipse. 
+Use your right mouse button and click &quot;Eclipse&quot;
+You can also start eclipse by just typing &quot;eclipse&quot; in xterm
+
+####Eclipse is open....next Step?
+You have successfully started eclipse. 
+The first time you should see this README file
+
+When BREW is not the default project or loaded...
+Open BREW
+
+Just use File--&gt;Open
+Select the desired folder and just open it.
+
+You should open it, no import, extract or anything else
+
+####BREW is loaded...next Step?
+Normally you can use the &quot;Run&quot; Button to start BREW
+
+However when you imported BREW or did other unusal things...
+and there is no &quot;Run&quot; Button or does not work
+You have to start BREW from the main file. 
+The mainfile is located under src--&gt;edu--&gt;hm--&gt;muse--&gt;TomcatServer.java.
+
+
+####BREW has been started...next Step?
+You can call BREW with a Web Browser.
+The Browser can be found by right click --&gt; Browser
+Normally the page of BREW is the landing page
+
+Or use &quot;localhost:8081/secu&quot; as start page.
+
+####I want to change sth
+When you want to redeploy the source code:
+Change your source code
+Stop BREW (red square)
+Start BREW
+Your changes had been deployed
+</pre><p>
+
+<h3><a name=toc21><a name="NWD4Ugr3m-c">License and stuff</a></a></h3>
+This is the general license for BREW
+<p><pre><a name="NW4Ugr3m-M1MOe-1" href="#NWD4Ugr3m-c"><dfn>&lt;some fancy license stuff&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-1">&lt;-U</a> <a href="#NWD4Ugr3m-d">U-&gt;</a>)</b>
+/*
+ * **
+ *  *                                        __          ____                                     __
+ *  *     /'\_/`\                 __        /\ \        /\  _`\                                __/\ \__
+ *  *    /\      \  __  __   ___ /\_\    ___\ \ \___    \ \,\L\_\     __    ___  __  __  _ __ /\_\ \ ,_\  __  __
+ *  *    \ \ \__\ \/\ \/\ \/' _ `\/\ \  /'___\ \  _ `\   \/_\__ \   /'__`\ /'___\\ \/\ \/\`'__\/\ \ \ \/ /\ \/\ \
+ *  *     \ \ \_/\ \ \ \_\ \\ \/\ \ \ \/\ \__/\ \ \ \ \    /\ \L\ \/\  __//\ \__/ \ \_\ \ \ \/ \ \ \ \ \_\ \ \_\ \
+ *  *      \ \_\\ \_\ \____/ \_\ \_\ \_\ \____\\ \_\ \_\   \ `\____\ \____\ \____\ \____/\ \_\  \ \_\ \__\\/`____ \
+ *  *       \/_/ \/_/\/___/ \/_/\/_/\/_/\/____/ \/_/\/_/    \/_____/\/____/\/____/\/___/  \/_/   \/_/\/__/ `/___/&gt; \
+ *  *                                                                                                         /\___/
+ *  *                                                                                                         \/__/
+ *  *
+ *  *     ____                                               __          ____
+ *  *    /\  _`\                                            /\ \        /\  _`\
+ *  *    \ \ \L\ \     __    ____    __     __     _ __  ___\ \ \___    \ \ \L\_\  _ __  ___   __  __  _____
+ *  *     \ \ ,  /   /'__`\ /',__\ /'__`\ /'__`\  /\`'__\'___\ \  _ `\   \ \ \L_L /\`'__\ __`\/\ \/\ \/\ '__`\
+ *  *      \ \ \\ \ /\  __//\__, `\\  __//\ \L\.\_\ \ \/\ \__/\ \ \ \ \   \ \ \/, \ \ \/\ \L\ \ \ \_\ \ \ \L\ \
+ *  *       \ \_\ \_\ \____\/\____/ \____\ \__/.\_\\ \_\ \____\\ \_\ \_\   \ \____/\ \_\ \____/\ \____/\ \ ,__/
+ *  *        \/_/\/ /\/____/\/___/ \/____/\/__/\/_/ \/_/\/____/ \/_/\/_/    \/___/  \/_/\/___/  \/___/  \ \ \/
+ *  *                                                                                                    \ \_\
+ *  *    This file is part of BREW.
+ *  *
+ *  *    BREW is free software: you can redistribute it and/or modify
+ *  *    it under the terms of the GNU General Public License as published by
+ *  *    the Free Software Foundation, either version 3 of the License, or
+ *  *    (at your option) any later version.
+ *  *
+ *  *    BREW is distributed in the hope that it will be useful,
+ *  *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  *    GNU General Public License for more details.
+ *  *
+ *  *    You should have received a copy of the GNU General Public License
+ *  *    along with BREW.  If not, see &lt;http://www.gnu.org/licenses/&gt;.                                                                                                  \/_/
+ *
+ */
+</pre><p>
+<a name="NWD4Ugr3m-d">And we want to have a simple file for this license</a>
+<p><pre><a name="NW4Ugr3m-3lKAMY-1" href="#NWD4Ugr3m-d"><dfn>&lt;LICENSE&gt;=</dfn></a>
+<a name="NW4Ugr3m-3lKAMY-1-u1" href="#NWD4Ugr3m-c"><i>&lt;some fancy license stuff&gt;</i></a>
+</pre><p>
+<h3><a name=toc22><a name="NWD4Ugr3m-e">imports for the different files</a></a></h3>
+<p><pre><a name="NW4Ugr3m-J2zL7-1" href="#NWD4Ugr3m-e"><dfn>&lt;some import statements for the SearchController&gt;=</dfn></a> <b>(<a href="#NWD4Ugr3m-1">&lt;-U</a>)</b>
+package edu.hm.muse.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+</pre><p>
+
+<pre><a name="NW4Ugr3m-38m9kp-1" href="#NW4Ugr3m-38m9kp-1"><dfn>&lt;TomcatServer.java&gt;=</dfn></a>
+<a name="NW4Ugr3m-38m9kp-1-u1" href="#NW4Ugr3m-2OP7sL-1"><i>&lt;Main File&gt;</i></a>
+</pre><p>
+
+<pre><a name="NW4Ugr3m-2OP7sL-1" href="#NW4Ugr3m-2OP7sL-1"><dfn>&lt;Main File&gt;=</dfn></a> <b>(<a href="#NW4Ugr3m-38m9kp-1">&lt;-U</a>)</b>
+public class TomcatServer {
+    public static void main(String[] args) throws ServletException, LifecycleException, IOException {
+
+        Tomcat tomcat = new Tomcat();
+        tomcat.setPort(8081);
+        tomcat.setBaseDir(&quot;.&quot;);
+        Context ctx = tomcat.addWebapp(&quot;/secu&quot;, &quot;secu&quot;);
+        tomcat.start();
+        tomcat.getServer().await();
+    }
+
+}
+</pre><p>
+
+
+
+
+<ul>
+<li><a href="#NWD4Ugr3m-P"><i>&lt;additionals documentation and datesettings&gt;</i></a>: <a href="#NWD4Ugr3m-M">U1</a>, <a href="#NWD4Ugr3m-P">D2</a>
+<li><a href="#NWD4Ugr3m-W"><i>&lt;build makefile&gt;</i></a>: <a href="#NWD4Ugr3m-T">U1</a>, <a href="#NWD4Ugr3m-W">D2</a>
+<li><a href="#NWD4Ugr3m-2"><i>&lt;class declaration for search controller&gt;</i></a>: <a href="#NWD4Ugr3m-1">U1</a>, <a href="#NWD4Ugr3m-2">D2</a>
+<li><a href="#NWD4Ugr3m-a"><i>&lt;copy doc to dir&gt;</i></a>: <a href="#NWD4Ugr3m-T">U1</a>, <a href="#NWD4Ugr3m-a">D2</a>
+<li><a href="#NWD4Ugr3m-U"><i>&lt;cycle all&gt;</i></a>: <a href="#NWD4Ugr3m-T">U1</a>, <a href="#NWD4Ugr3m-U">D2</a>
+<li><a href="#NWD4Ugr3m-5"><i>&lt;declaration for post based search action method&gt;</i></a>: <a href="#NWD4Ugr3m-3">U1</a>, <a href="#NWD4Ugr3m-5">D2</a>
+<li><a href="#NWD4Ugr3m-K"><i>&lt;delete BREW at default path&gt;</i></a>: <a href="#NWD4Ugr3m-I">U1</a>, <a href="#NWD4Ugr3m-K">D2</a>
+<li><a href="#NWD4Ugr3m-V"><i>&lt;edit userguide&gt;</i></a>: <a href="#NWD4Ugr3m-T">U1</a>, <a href="#NWD4Ugr3m-V">D2</a>
+<li><a href="#NWD4Ugr3m-L"><i>&lt;extract BREW from default path to default installation path&gt;</i></a>: <a href="#NWD4Ugr3m-I">U1</a>, <a href="#NWD4Ugr3m-L">D2</a>
+<li><a href="#NWD4Ugr3m-Q"><i>&lt;filename for deployment or suffix&gt;</i></a>: <a href="#NWD4Ugr3m-M">U1</a>, <a href="#NWD4Ugr3m-Q">D2</a>
+<li><a href="#NWD4Ugr3m-8"><i>&lt;fill searchmodel with data&gt;</i></a>: <a href="#NWD4Ugr3m-6">U1</a>, <a href="#NWD4Ugr3m-8">D2</a>
+<li><a href="#NWD4Ugr3m-7"><i>&lt;generate searchmodel and view&gt;</i></a>: <a href="#NWD4Ugr3m-6">U1</a>, <a href="#NWD4Ugr3m-7">D2</a>
+<li><a href="#NWD4Ugr3m-F"><i>&lt;include the footer and some convienience stuff&gt;</i></a>: <a href="#NWD4Ugr3m-A">U1</a>, <a href="#NWD4Ugr3m-F">D2</a>
+<li><a href="#NWD4Ugr3m-B"><i>&lt;include the header and the c taglib&gt;</i></a>: <a href="#NWD4Ugr3m-A">U1</a>, <a href="#NWD4Ugr3m-B">D2</a>
+<li><a href="#NWD4Ugr3m-d"><i>&lt;LICENSE&gt;</i></a>: <a href="#NWD4Ugr3m-d">D1</a>
+<li><a href="#NW4Ugr3m-2OP7sL-1"><i>&lt;Main File&gt;</i></a>: <a href="#NW4Ugr3m-38m9kp-1">U1</a>, <a href="#NW4Ugr3m-2OP7sL-1">D2</a>
+<li><a href="#NWD4Ugr3m-G"><i>&lt;MakefileBrew&gt;</i></a>: <a href="#NWD4Ugr3m-G">D1</a>
+<li><a href="#NWD4Ugr3m-H"><i>&lt;MakefileGuide&gt;</i></a>: <a href="#NWD4Ugr3m-H">D1</a>
+<li><a href="#NWD4Ugr3m-4"><i>&lt;Mapping for post based search action&gt;</i></a>: <a href="#NWD4Ugr3m-3">U1</a>, <a href="#NWD4Ugr3m-4">D2</a>
+<li><a href="#NWD4Ugr3m-6"><i>&lt;method body for post based seach action method&gt;</i></a>: <a href="#NWD4Ugr3m-3">U1</a>, <a href="#NWD4Ugr3m-6">D2</a>
+<li><a href="#NWD4Ugr3m-3"><i>&lt;method declaration for search controller&gt;</i></a>: <a href="#NWD4Ugr3m-1">U1</a>, <a href="#NWD4Ugr3m-3">D2</a>
+<li><a href="#NWD4Ugr3m-I"><i>&lt;parts of makefile for Brew deployment&gt;</i></a>: <a href="#NWD4Ugr3m-G">U1</a>, <a href="#NWD4Ugr3m-I">D2</a>
+<li><a href="#NWD4Ugr3m-T"><i>&lt;parts of makefile for guide creation&gt;</i></a>: <a href="#NWD4Ugr3m-H">U1</a>, <a href="#NWD4Ugr3m-T">D2</a>
+<li><a href="#NWD4Ugr3m-S"><i>&lt;parts of makefile to build brew&gt;</i></a>: <a href="#NWD4Ugr3m-H">U1</a>, <a href="#NWD4Ugr3m-S">D2</a>
+<li><a href="#NWD4Ugr3m-D"><i>&lt;present a form usable by controller&gt;</i></a>: <a href="#NWD4Ugr3m-A">U1</a>, <a href="#NWD4Ugr3m-D">D2</a>
+<li><a href="#NWD4Ugr3m-b"><i>&lt;README&gt;</i></a>: <a href="#NWD4Ugr3m-b">D1</a>
+<li><a href="#NWD4Ugr3m-J"><i>&lt;redeploy BREW&gt;</i></a>: <a href="#NWD4Ugr3m-I">U1</a>, <a href="#NWD4Ugr3m-J">D2</a>
+<li><a href="#NWD4Ugr3m-E"><i>&lt;render some model based output&gt;</i></a>: <a href="#NWD4Ugr3m-A">U1</a>, <a href="#NWD4Ugr3m-E">D2</a>
+<li><a href="#NWD4Ugr3m-C"><i>&lt;render some nice topics&gt;</i></a>: <a href="#NWD4Ugr3m-A">U1</a>, <a href="#NWD4Ugr3m-C">D2</a>
+<li><a href="#NWD4Ugr3m-9"><i>&lt;return model and view&gt;</i></a>: <a href="#NWD4Ugr3m-6">U1</a>, <a href="#NWD4Ugr3m-9">D2</a>
+<li><a href="#NWD4Ugr3m-A"><i>&lt;search.jsp&gt;</i></a>: <a href="#NWD4Ugr3m-A">D1</a>
+<li><a href="#NWD4Ugr3m-1"><i>&lt;SearchController.java&gt;</i></a>: <a href="#NWD4Ugr3m-1">D1</a>
+<li><a href="#NWD4Ugr3m-O"><i>&lt;some basic directories settings&gt;</i></a>: <a href="#NWD4Ugr3m-M">U1</a>, <a href="#NWD4Ugr3m-O">D2</a>
+<li><a href="#NWD4Ugr3m-M"><i>&lt;some basic variables for Brew deployment&gt;</i></a>: <a href="#NWD4Ugr3m-G">U1</a>, <a href="#NWD4Ugr3m-M">D2</a>
+<li><a href="#NWD4Ugr3m-c"><i>&lt;some fancy license stuff&gt;</i></a>: <a href="#NWD4Ugr3m-1">U1</a>, <a href="#NWD4Ugr3m-c">D2</a>, <a href="#NWD4Ugr3m-d">U3</a>
+<li><a href="#NWD4Ugr3m-e"><i>&lt;some import statements for the SearchController&gt;</i></a>: <a href="#NWD4Ugr3m-1">U1</a>, <a href="#NWD4Ugr3m-e">D2</a>
+<li><a href="#NWD4Ugr3m-N"><i>&lt;tar.gz important pathes from BREW&gt;</i></a>: <a href="#NWD4Ugr3m-I">U1</a>, <a href="#NWD4Ugr3m-N">D2</a>
+<li><a href="#NWD4Ugr3m-R"><i>&lt;tar.gz important pathes without date&gt;</i></a>: <a href="#NWD4Ugr3m-I">U1</a>, <a href="#NWD4Ugr3m-R">D2</a>
+<li><a href="#NW4Ugr3m-38m9kp-1"><i>&lt;TomcatServer.java&gt;</i></a>: <a href="#NW4Ugr3m-38m9kp-1">D1</a>
+<li><a href="#NWD4Ugr3m-Y"><i>&lt;userguide to html&gt;</i></a>: <a href="#NWD4Ugr3m-T">U1</a>, <a href="#NWD4Ugr3m-Y">D2</a>
+<li><a href="#NWD4Ugr3m-Z"><i>&lt;userguide to pdf&gt;</i></a>: <a href="#NWD4Ugr3m-T">U1</a>, <a href="#NWD4Ugr3m-Z">D2</a>
+<li><a href="#NWD4Ugr3m-X"><i>&lt;userguide to tex&gt;</i></a>: <a href="#NWD4Ugr3m-T">U1</a>, <a href="#NWD4Ugr3m-X">D2</a>
+</ul>
+<ul>
+</ul>
+</body></html>
+

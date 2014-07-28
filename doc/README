@@ -1,0 +1,42 @@
+Welcome to BREW
+
+####Open BREW
+This is more how to start the IDE.
+Hence we suppose you have no running instance from eclipse. 
+Use your right mouse button and click "Eclipse"
+You can also start eclipse by just typing "eclipse" in xterm
+
+####Eclipse is open....next Step?
+You have successfully started eclipse. 
+The first time you should see this README file
+
+When BREW is not the default project or loaded...
+Open BREW
+
+Just use File-->Open
+Select the desired folder and just open it.
+
+You should open it, no import, extract or anything else
+
+####BREW is loaded...next Step?
+Normally you can use the "Run" Button to start BREW
+
+However when you imported BREW or did other unusal things...
+and there is no "Run" Button or does not work
+You have to start BREW from the main file. 
+The mainfile is located under src-->edu-->hm-->muse-->TomcatServer.java.
+
+
+####BREW has been started...next Step?
+You can call BREW with a Web Browser.
+The Browser can be found by right click --> Browser
+Normally the page of BREW is the landing page
+
+Or use "localhost:8081/secu" as start page.
+
+####I want to change sth
+When you want to redeploy the source code:
+Change your source code
+Stop BREW (red square)
+Start BREW
+Your changes had been deployed

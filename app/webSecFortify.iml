@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="EclipseModuleManager">
+    <libelement value="jar://$MODULE_DIR$/lib/aopalliance.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/commons-logging.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/javax.servlet.jsp.jstl-1.2.1.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/javax.servlet.jsp.jstl-api-1.2.1.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/spring-aop.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/spring-asm.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/spring-aspects.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/spring-beans.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/spring-context-support.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/spring-context.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/spring-core.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/spring-expression.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/spring-instrument-tomcat.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/spring-instrument.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/spring-jdbc.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/spring-jms.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/spring-orm.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/spring-oxm.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/spring-test.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/spring-tx.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/spring-web.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/spring-webmvc.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/apache-tomcat-7.0.27-embed/ecj-3.7.2.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/apache-tomcat-7.0.27-embed/tomcat-embed-core.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/hsql/hsqldb.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/apache-tomcat-7.0.27-embed/tomcat-embed-logging-juli.jar!/" />
+    <libelement value="jar://$MODULE_DIR$/lib/apache-tomcat-7.0.27-embed/tomcat-embed-jasper.jar!/" />
+    <src_description expected_position="0">
+      <src_folder value="file://$MODULE_DIR$/src" expected_position="0" />
+    </src_description>
+  </component>
+  <component name="FacetManager">
+    <facet type="web" name="Web">
+      <configuration>
+        <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/webapps/secu/WEB-INF/web.xml" />
+        </descriptors>
+        <webroots>
+          <root url="file://$MODULE_DIR$/webapps/secu" relative="/" />
+        </webroots>
+      </configuration>
+    </facet>
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/webapps/secu/WEB-INF/dispatcher-servlet.xml</file>
+          <file>file://$MODULE_DIR$/webapps/secu/WEB-INF/applicationContext.xml</file>
+        </fileset>
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_6" inherit-compiler-output="false">
+    <output url="file://$MODULE_DIR$/bin" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="jdk" jdkName="1.7" jdkType="JavaSDK" />
+    <orderEntry type="module-library">
+      <library name="aopalliance.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/aopalliance.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="commons-logging.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/commons-logging.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="javax.servlet.jsp.jstl-1.2.1.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/javax.servlet.jsp.jstl-1.2.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="javax.servlet.jsp.jstl-api-1.2.1.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/javax.servlet.jsp.jstl-api-1.2.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="spring-aop.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/spring-aop.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="spring-asm.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/spring-asm.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="spring-aspects.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/spring-aspects.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="spring-beans.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/spring-beans.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="spring-context-support.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/spring-context-support.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="spring-context.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/spring-context.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="spring-core.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/spring-core.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="spring-expression.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/spring-expression.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="spring-instrument-tomcat.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/spring-instrument-tomcat.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="spring-instrument.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/spring-instrument.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="spring-jdbc.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/spring-jdbc.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="spring-jms.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/spring-jms.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="spring-orm.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/spring-orm.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="spring-oxm.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/spring-oxm.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="spring-test.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/spring-test.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="spring-tx.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/spring-tx.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="spring-web.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/spring-web.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="spring-webmvc.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/spring-webmvc.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="ecj-3.7.2.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/apache-tomcat-7.0.27-embed/ecj-3.7.2.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="tomcat-embed-core.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/apache-tomcat-7.0.27-embed/tomcat-embed-core.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="hsqldb.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/hsql/hsqldb.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="tomcat-embed-logging-juli.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/apache-tomcat-7.0.27-embed/tomcat-embed-logging-juli.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="tomcat-embed-jasper.jar">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/apache-tomcat-7.0.27-embed/tomcat-embed-jasper.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+  </component>
+</module>
+
